@@ -1,0 +1,178 @@
+<banner></banner>
+<navbar></navbar>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <sidebar></sidebar>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <div class="row">
+                <ncy-breadcrumb></ncy-breadcrumb>
+            </div>
+
+            <div class="content">
+                <h4 class="page-header">{{program.uraian}}</h4>
+                <div class="col-sm-6">
+                    <div class="well">
+                        <form class="form-horizontal" name="form" ng-submit="submit(form)" novalidate>
+                            <div class="form-group" ng-class="{'has-error':form.k5.$error.required && submitted || form.k5.$error.pattern && submitted}">
+                                <label class="col-sm-3 control-label">Kode Kegiatan</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="k5" class="form-control input-sm" ng-model="data.k5" ng-pattern="/^(\d)+$/" required>
+                                    <p class="help-block" ng-show="form.k5.$error.required && submitted">
+                                        <span class="fa fa-times-circle fa-fw"></span> Tidak boleh kosong
+                                    </p>
+                                    <p class="help-block" ng-show="form.k5.$error.pattern && submitted">
+                                        <span class="fa fa-times-circle fa-fw"></span> Harus angka
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="form-group" ng-class="{'has-error':form.uraian.$error.required && submitted}">
+                                <label class="col-sm-3 control-label">Uraian Kegiatan</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="uraian" class="form-control input-sm" ng-model="data.uraian" required>
+                                    <p class="help-block" ng-show="form.uraian.$error.required && submitted">
+                                        <span class="fa fa-times-circle fa-fw"></span> Tidak boleh kosong
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Indikator Kinerja Kegiatan</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="indikator" class="form-control input-sm" ng-model="data.indikator">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Lokasi</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="lokasi" class="form-control input-sm" ng-model="data.lokasi">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Sasaran</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="sasaran" class="form-control input-sm" ng-model="data.sasaran">
+                                </div>
+                            </div>
+                            <div class="form-group" ng-class="{'has-error':form.satuan.$error.required && submitted}">
+                                <label class="col-sm-3 control-label">Satuan</label>
+                                <div class="col-sm-9">
+                                    <ui-select name="satuan" ng-model="satuan.selected" required>
+                                        <ui-select-match placeholder="Pilih Satuan...">{{$select.selected.satuan}}</ui-select-match>
+                                        <ui-select-choices repeat="satuan in satuans | orderBy:'satuan' | filter: $select.search">
+                                            <div ng-bind-html="satuan.satuan | highlight: $select.search"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                    <p class="help-block" ng-show="form.satuan.$error.required && submitted">
+                                        <span class="fa fa-times-circle fa-fw"></span> Tidak boleh kosong
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="form-group" ng-class="{'has-error':form.harga.$error.required && submitted || form.harga.$error.pattern && submitted}">
+                                <label class="col-sm-3 control-label">Harga Satuan</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="harga" class="form-control input-sm" ng-model="data.harga" ng-pattern="/^(\d)+$/" required>
+                                    <p class="bantuan"><small>Pengisian Harga Satuan tidak menggunakan titik</small></p>
+                                    <p class="help-block" ng-show="form.harga.$error.required && submitted">
+                                        <span class="fa fa-times-circle fa-fw"></span> Tidak boleh kosong
+                                    </p>
+                                    <p class="help-block" ng-show="form.harga.$error.pattern && submitted">
+                                        <span class="fa fa-times-circle fa-fw"></span> Harus angka
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="form-group" ng-class="{'has-error':form.dana.$error.required && submitted}">
+                                <label class="col-sm-3 control-label">Sumber Dana</label>
+                                <div class="col-sm-9">
+                                    <ui-select name="dana" ng-model="dana.selected" required>
+                                        <ui-select-match placeholder="Pilih Sumber Dana...">{{$select.selected.dana}}</ui-select-match>
+                                        <ui-select-choices repeat="dana in danas | orderBy:'dana' | filter: $select.search">
+                                            <div ng-bind-html="dana.dana | highlight: $select.search"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                    <p class="help-block" ng-show="form.dana.$error.required && submitted">
+                                        <span class="fa fa-times-circle fa-fw"></span> Tidak boleh kosong
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="form-group" ng-class="{'has-error':form.pelaksana.$error.required && submitted}">
+                                <label class="col-sm-3 control-label">Pelaksana</label>
+                                <div class="col-sm-9">
+                                    <ui-select name="pelaksana" ng-model="pelaksana.selected" required>
+                                        <ui-select-match placeholder="Pilih Pelaksana...">{{$select.selected}}</ui-select-match>
+                                        <ui-select-choices repeat="pelaksana in pelaksanas | orderBy:'pelaksana' | filter: $select.search">
+                                            <div ng-bind-html="pelaksana | highlight: $select.search"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                    <p class="help-block" ng-show="form.pelaksana.$error.required && submitted">
+                                        <span class="fa fa-times-circle fa-fw"></span> Tidak boleh kosong
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-3 col-sm-9">
+                                    <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="disp" block-ui="block">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Daftar Kegiatan <a href="" class="pull-right" ng-click="show=!show" title="Cari"><span class="fa fa-search"></span></a></div>
+                            <ul class="list-group" ng-show="nodata">
+                                <li class="list-group-item list-group-item-info">Tidak ada data</li>
+                            </ul>
+                            <div class="table-responsive" ng-show="results.length>0">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center" colspan="5">Kode</th>
+                                            <th class="text-center">Kegiatan</th>
+                                            <th class="text-center">Indikator</th>
+                                            <th class="text-center">Lokasi</th>
+                                            <th class="text-center">Sasaran</th>
+                                            <th class="text-center">Satuan</th>
+                                            <th class="text-center">Harga Satuan</th>
+                                            <th class="text-center">Sumber Dana</th>
+                                            <th class="text-center">Pelaksana</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-show="show">
+                                            <td colspan="5"></td>
+                                            <td>
+                                                <input type="text" placeholder="Cari Kegiatan..." class="form-control input-sm" ng-model="search.uraian" />
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr ng-repeat="result in results | orderBy:'k5' | filter:search">
+                                            <td class="text-center">{{result.k1}}</td>
+                                            <td class="text-center">{{result.k2}}</td>
+                                            <td class="text-center">{{result.k3}}</td>
+                                            <td class="text-center">{{result.k4}}</td>
+                                            <td class="text-center">{{result.k5}}</td>
+                                            <td>{{result.uraian}}</td>
+                                            <td>{{result.indikator}}</td>
+                                            <td class="text-center">{{result.lokasi}}</td>
+                                            <td class="text-center">{{result.sasaran}}</td>
+                                            <td class="text-center">{{result.satuan}}</td>
+                                            <td class="text-right">{{result.harga|number:0}}</td>
+                                            <td class="text-center">{{result.dana}}</td>
+                                            <td class="text-center">{{result.pelaksana}}</td>
+                                            <td class="text-center"><a ui-sref=".edit({id:result._id})" title="Edit">Edit</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

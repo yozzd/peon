@@ -1,0 +1,8 @@
+<ul class="nav nav-sidebar" ng-show="isAdmin()">
+    <li class="header">Menu</li>
+    <li><a ui-sref="{{menu.state}}" ui-sref-active-eq="active" ng-repeat="menu in admin.home" title="{{menu.label}}">{{menu.label}}</a></li>
+    <li class="subheader">Settings</li>
+    <li><a ui-sref="{{menu.state}}" ui-sref-active="active" ng-repeat="menu in admin.settings" title="{{menu.label}}">{{menu.label}}</a></li>
+    <li class="subheader">Program / Kegiatan</li>
+    <li><a ui-sref="{{menu.state}}" ui-sref-active="active" ng-repeat="menu in admin.main" title="{{menu.label}}">{{menu.label}}</a></li>
+</ul>

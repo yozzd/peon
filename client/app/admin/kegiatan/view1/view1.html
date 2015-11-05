@@ -1,0 +1,54 @@
+<banner></banner>
+<navbar></navbar>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <sidebar></sidebar>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <div class="row">
+                <ncy-breadcrumb></ncy-breadcrumb>
+            </div>
+
+            <div class="content">
+                <h4 class="page-header">Pilih Program</h4>
+                <div class="col-sm-12">
+                    <div class="disp" block-ui="block">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Pilih Program <a href="" class="pull-right" ng-click="show=!show" title="Cari"><span class="fa fa-search"></span></a></div>
+                            <ul class="list-group" ng-show="nodata">
+                                <li class="list-group-item list-group-item-info">Tidak ada data</li>
+                            </ul>
+                            <div class="table-responsive" ng-show="datas.length>0">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center" colspan="4">Kode</th>
+                                            <th class="text-center">Program</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-show="show">
+                                            <td colspan="4"></td>
+                                            <td>
+                                                <input type="text" placeholder="Cari Program..." class="form-control input-sm" ng-model="search.uraian" />
+                                            </td>
+                                        </tr>
+                                        <tr ng-repeat="data in datas | orderBy:'k4' | filter:search">
+                                            <td class="text-center">{{data.k1}}</td>
+                                            <td class="text-center">{{data.k2}}</td>
+                                            <td class="text-center">{{data.k3}}</td>
+                                            <td class="text-center">{{data.k4}}</td>
+                                            <td><a ui-sref=".view2({id:data._id})">{{data.uraian}}</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

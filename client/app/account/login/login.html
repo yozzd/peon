@@ -1,0 +1,34 @@
+<div class="col-sm-8 col-sm-offset-2 login">
+    <div class="col-sm-6">
+        <p class="lead">Aplikasi Perencanaan Online</p>
+        <p class="lead">Dinas Pertanian Provinsi Sumatera Utara</p>
+        <p>Silahkan login sesuai dengan username dan password anda</p>
+    </div>
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><span class="fa fa-sign-in fa-fw"></span> Login</h3>
+            </div>
+            <div class="panel-body">
+                <form class="login-form" name="form" ng-submit="login(form)" novalidate>
+                    <div class="form-group" ng-class="{'has-error':form.email.$error.required && submitted || errors.other}">
+                        <input type="text" class="form-control input-sm" name="email" placeholder="Username" ng-model="user.email" required>
+                    </div>
+                    <div class="form-group" ng-class="{'has-error':form.password.$error.required && submitted || errors.other}">
+                        <input type="password" class="form-control input-sm" name="password" placeholder="Password" ng-model="user.password" required>
+                    </div>
+                    <div>
+                        <p class="help-block" ng-show="(form.email.$error.required || form.password.$error.required) && submitted">
+                            <span class="fa fa-times-circle fa-fw"></span> Masukkan username dan password anda!
+                        </p>
+                        <p class="help-block" ng-show="errors.other"><span class="fa fa-times-circle fa-fw"></span> {{errors.other}}</p>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-sm pull-right"><span class="fa fa-sign-in fa-fw"></span> Login</button>
+                </form>
+            </div>
+            <div class="panel-footer">
+                <div>Copyright &copy; {{year1}}<span ng-show="year2>year1"> - {{year2}}</span> Dinas Pertanian Provinsi Sumatera Utara</div>
+            </div>
+        </div>
+    </div>
+</div>

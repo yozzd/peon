@@ -1,0 +1,26 @@
+<div class="aside" tabindex="-1" role="dialog" ng-controller="AdminSatuanDeleteCtrl">
+    <div class="aside-dialog">
+        <div class="aside-content">
+            <div class="aside-header">
+                <h4 class="aside-title">Hapus ?</h4>
+            </div>
+            <div class="aside-body">
+                <div>Apakah anda yakin akan menghapus data ini?</div>
+                <table class="table table-view alert alert-danger">
+                    <tbody>
+                        <tr>
+                            <td>Satuan</td>
+                            <td>{{data.satuan}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="aside-footer">
+                <ul class="list-inline">
+                    <li><a href="" ng-click="$hide()">Tidak</a></li>
+                    <li><a href="" class="text-danger" ng-click="delete(data._id)">Ya</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

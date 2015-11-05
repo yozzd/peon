@@ -1,0 +1,40 @@
+<banner></banner>
+<navbar></navbar>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <sidebar></sidebar>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <div class="row">
+                <ncy-breadcrumb></ncy-breadcrumb>
+            </div>
+
+            <div class="content">
+                <h4 class="page-header">Satuan</h4>
+                <div class="col-sm-6">
+                    <div class="well">
+                        <form class="form-horizontal" name="form" ng-submit="submit(form)" novalidate>
+                            <div class="form-group" ng-class="{'has-error':form.satuan.$error.required && submitted}">
+                                <label class="col-sm-3 control-label">Satuan</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="satuan" class="form-control input-sm" ng-model="data.satuan" required>
+                                    <p class="help-block" ng-show="form.satuan.$error.required && submitted">
+                                        <span class="fa fa-times-circle fa-fw"></span> Tidak boleh kosong
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-3 col-sm-9">
+                                    <button type="submit" class="btn btn-primary btn-sm">Update</button>
+                                    <a href="" class="text-danger" style="margin-left: 10px;" ng-click="delete()" title="Hapus">Hapus</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

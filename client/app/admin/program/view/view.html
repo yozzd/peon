@@ -1,0 +1,111 @@
+<banner></banner>
+<navbar></navbar>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <sidebar></sidebar>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <div class="row">
+                <ncy-breadcrumb></ncy-breadcrumb>
+            </div>
+
+            <div class="content">
+                <h4 class="page-header">Program</h4>
+                <div class="col-sm-6">
+                    <div class="well">
+                        <form class="form-horizontal" name="form" ng-submit="submit(form)" novalidate>
+                            <div class="form-group" ng-class="{'has-error':form.k4.$error.required && submitted || form.k4.$error.pattern && submitted}">
+                                <label class="col-sm-3 control-label">Kode Program</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="k4" class="form-control input-sm" ng-model="data.k4" ng-pattern="/^(\d)+$/" required>
+                                    <p class="help-block" ng-show="form.k4.$error.required && submitted">
+                                        <span class="fa fa-times-circle fa-fw"></span> Tidak boleh kosong
+                                    </p>
+                                    <p class="help-block" ng-show="form.k4.$error.pattern && submitted">
+                                        <span class="fa fa-times-circle fa-fw"></span> Harus angka
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="form-group" ng-class="{'has-error':form.uraian.$error.required && submitted}">
+                                <label class="col-sm-3 control-label">Uraian Program</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="uraian" class="form-control input-sm" ng-model="data.uraian" required>
+                                    <p class="help-block" ng-show="form.uraian.$error.required && submitted">
+                                        <span class="fa fa-times-circle fa-fw"></span> Tidak boleh kosong
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Indikator Kinerja Program</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="indikator" class="form-control input-sm" ng-model="data.indikator">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Tampilkan?</label>
+                                <div class="col-sm-9">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" ng-model="data.tampilkan" data-animation="am-flip-x" bs-tooltip="tooltip">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-3 col-sm-9">
+                                    <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="disp" block-ui="block">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Daftar Program <a href="" class="pull-right" ng-click="show=!show" title="Cari"><span class="fa fa-search"></span></a></div>
+                            <ul class="list-group" ng-show="nodata">
+                                <li class="list-group-item list-group-item-info">Tidak ada data</li>
+                            </ul>
+                            <div class="table-responsive" ng-show="datas.length>0">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center" colspan="4">Kode</th>
+                                            <th class="text-center">Program</th>
+                                            <th class="text-center">Indikator</th>
+                                            <th class="text-center">Tampilkan?</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-show="show">
+                                            <td colspan="4"></td>
+                                            <td>
+                                                <input type="text" placeholder="Cari Program..." class="form-control input-sm" ng-model="search.uraian" />
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr ng-repeat="data in datas | orderBy:'k4' | filter:search">
+                                            <td class="text-center">{{data.k1}}</td>
+                                            <td class="text-center">{{data.k2}}</td>
+                                            <td class="text-center">{{data.k3}}</td>
+                                            <td class="text-center">{{data.k4}}</td>
+                                            <td>{{data.uraian}}</td>
+                                            <td>{{data.indikator}}</td>
+                                            <td class="text-center"><span ng-if="data.tampilkan==true">Ya</span><span ng-if="data.tampilkan==false">Tidak</span></td>
+                                            <td class="text-center"><a ui-sref=".edit({id:data._id})" title="Edit">Edit</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

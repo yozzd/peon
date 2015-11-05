@@ -1,0 +1,77 @@
+<banner></banner>
+<navbar></navbar>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <sidebar></sidebar>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <div class="row">
+                <ncy-breadcrumb></ncy-breadcrumb>
+            </div>
+
+            <div class="content">
+                <h4 class="page-header">Sumber Dana</h4>
+                <div class="col-sm-6">
+                    <div class="well">
+                        <form class="form-horizontal" name="form" ng-submit="submit(form)" novalidate>
+                            <div class="form-group" ng-class="{'has-error':form.dana.$error.required && submitted}">
+                                <label class="col-sm-3 control-label">Sumber Dana</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="dana" class="form-control input-sm" ng-model="data.dana" required>
+                                    <p class="help-block" ng-show="form.dana.$error.required && submitted">
+                                        <span class="fa fa-times-circle fa-fw"></span> Tidak boleh kosong
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-3 col-sm-9">
+                                    <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="disp" block-ui="block">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Daftar Sumber Dana <a href="" class="pull-right" ng-click="show=!show" title="Cari"><span class="fa fa-search"></span></a></div>
+                            <ul class="list-group" ng-show="nodata">
+                                <li class="list-group-item list-group-item-info">Tidak ada data</li>
+                            </ul>
+                            <div class="table-responsive" ng-show="datas.length>0">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">No</th>
+                                            <th style="width: 80%; cursor: pointer;" ng-click="predicate='dana'; reverse=!reverse">
+                                                <span>Sumber Dana<span ng-show="predicate=='dana'"><span ng-class="{'fa fa-angle-up pull-right':!reverse,'fa fa-angle-down pull-right':reverse}"></span></span>
+                                                </span>
+                                            </th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-show="show">
+                                            <td></td>
+                                            <td>
+                                                <input type="text" placeholder="Cari Sumber Dana..." class="form-control input-sm" ng-model="search.dana" />
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        <tr ng-repeat="data in datas | orderBy:predicate:reverse | filter:search">
+                                            <td class="text-center">{{$index+1}}</td>
+                                            <td>{{data.dana}}</td>
+                                            <td class="text-center"><a ui-sref=".edit({id:data._id})" title="Edit">Edit</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

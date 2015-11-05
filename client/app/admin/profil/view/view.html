@@ -1,0 +1,74 @@
+<banner></banner>
+<navbar></navbar>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <sidebar></sidebar>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <div class="row">
+                <ncy-breadcrumb></ncy-breadcrumb>
+            </div>
+            <div class="content">
+                <h4 class="page-header">Profil SKPD <small><a ui-sref=".edit({id:data._id})">Edit</a></small></h4>
+                <div class="col-sm-6">
+                    <table class="table table-view">
+                        <tr>
+                            <td>Tahun Perencanaan</td>
+                            <td>{{data.tahun}}</td>
+                        </tr>
+                        <tr>
+                            <td>Nama SKPD</td>
+                            <td>{{data.skpd}}</td>
+                        </tr>
+                        <tr>
+                            <td>Alamat SKPD</td>
+                            <td>{{data.alamat}}</td>
+                        </tr>
+                        <tr>
+                            <td>Provinsi</td>
+                            <td>{{data.map}}</td>
+                        </tr>
+                        <tr>
+                            <td>No. Telepon</td>
+                            <td>{{data.telp}}</td>
+                        </tr>
+                        <tr>
+                            <td>No. Fax</td>
+                            <td>{{data.fax}}</td>
+                        </tr>
+                        <tr>
+                            <td>Email SKPD</td>
+                            <td>{{data.email}}</td>
+                        </tr>
+                        <tr>
+                            <td class="sub">Contact Person</td>
+                            <td class="sub"><i><small>*) Yang menangani perencanaan</small></i></td>
+                        </tr>
+                        <tr>
+                            <td>Nama</td>
+                            <td>{{data.namakontak}}</td>
+                        </tr>
+                        <tr>
+                            <td>No. Telepon</td>
+                            <td>{{data.telpkontak}}</td>
+                        </tr>
+                        <tr>
+                            <td class="sub">Kepala SKPD</td>
+                            <td class="sub"></td>
+                        </tr>
+                        <tr>
+                            <td>Nama</td>
+                            <td>{{data.namakepala}}</td>
+                        </tr>
+                        <tr>
+                            <td>NIP</td>
+                            <td>{{data.nipkepala}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
