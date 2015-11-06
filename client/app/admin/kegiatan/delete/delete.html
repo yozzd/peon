@@ -1,0 +1,58 @@
+<div class="aside" tabindex="-1" role="dialog" ng-controller="AdminKegiatanDeleteCtrl">
+    <div class="aside-dialog">
+        <div class="aside-content">
+            <div class="aside-header">
+                <h4 class="aside-title">Hapus ?</h4>
+            </div>
+            <div class="aside-body">
+                <div>Apakah anda yakin akan menghapus data ini?</div>
+                <table class="table table-view alert alert-danger">
+                    <tbody>
+                        <tr>
+                            <td>Kode</td>
+                            <td>{{data.k1}}.{{data.k2}}.{{data.k3}}.{{data.k4}}.{{data.k5}}</td>
+                        </tr>
+                        <tr>
+                            <td>Uraian Kegiatan</td>
+                            <td>{{data.uraian}}</td>
+                        </tr>
+                        <tr>
+                            <td>Indikator Kinerja Kegiatan</td>
+                            <td>{{data.indikator}}</td>
+                        </tr>
+                        <tr>
+                            <td>Lokasi</td>
+                            <td>{{data.lokasi}}</td>
+                        </tr>
+                        <tr>
+                            <td>Sasaran</td>
+                            <td>{{data.sasaran}}</td>
+                        </tr>
+                        <tr>
+                            <td>Satuan</td>
+                            <td>{{data.satuan}}</td>
+                        </tr>
+                        <tr>
+                            <td>Harga Satuan</td>
+                            <td>{{data.harga|number:0}}</td>
+                        </tr>
+                        <tr>
+                            <td>Sumber Dana</td>
+                            <td>{{data.dana}}</td>
+                        </tr>
+                        <tr>
+                            <td>Pelaksana</td>
+                            <td>{{data.pelaksana}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="aside-footer">
+                <ul class="list-inline">
+                    <li><a href="" ng-click="$hide()">Tidak</a></li>
+                    <li><a href="" class="text-danger" ng-click="delete(data._id)">Ya</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

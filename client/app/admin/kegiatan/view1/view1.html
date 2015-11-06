@@ -16,7 +16,7 @@
                 <div class="col-sm-12">
                     <div class="disp" block-ui="block">
                         <div class="panel panel-default">
-                            <div class="panel-heading">Pilih Program <a href="" class="pull-right" ng-click="show=!show" title="Cari"><span class="fa fa-search"></span></a></div>
+                            <div class="panel-heading">Pilih Program <a href="" class="pull-right" ng-click="show=!show" ng-show="datas.length>0" title="Cari"><span class="fa fa-search"></span></a></div>
                             <ul class="list-group" ng-show="nodata">
                                 <li class="list-group-item list-group-item-info">Tidak ada data</li>
                             </ul>
@@ -40,7 +40,7 @@
                                             <td class="text-center">{{data.k2}}</td>
                                             <td class="text-center">{{data.k3}}</td>
                                             <td class="text-center">{{data.k4}}</td>
-                                            <td><a ui-sref=".view2({id:data._id})">{{data.uraian}}</a></td>
+                                            <td><a ui-sref=".view2({pid:data._id})">{{data.uraian}}</a></td>
                                         </tr>
                                     </tbody>
                                 </table>

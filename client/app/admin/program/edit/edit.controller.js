@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('peonApp')
-    .controller('AdminProgramEditCtrl', function ($scope, Restangular, $stateParams, $state, $alert) {
+    .controller('AdminProgramEditCtrl', function ($scope, Restangular, $stateParams, $state, $alert, $aside) {
 
         function getProgram() {
             Restangular.one('programs').customGET($stateParams.id).then(function (data) {
@@ -23,6 +23,16 @@ angular.module('peonApp')
                     });
                 });
             }
+        };
+
+        $scope.delete = function () {
+            var deleteAside = $aside({
+                scope: $scope,
+                templateUrl: 'app/admin/program/delete/delete.html'
+            });
+            deleteAside.$promise.then(function () {
+                deleteAside.show();
+            });
         };
 
     });

@@ -184,7 +184,7 @@ angular.module('peonApp')
                 }
             })
             .state('admin.kegiatan.view2', {
-                url: '/view2/{id}',
+                url: '/view2/{pid}',
                 views: {
                     '@': {
                         templateUrl: 'app/admin/kegiatan/view2/view2.html',
@@ -199,6 +199,24 @@ angular.module('peonApp')
                 },
                 ncyBreadcrumb: {
                     label: '{{program.uraian}}'
+                }
+            })
+            .state('admin.kegiatan.view2.edit', {
+                url: '/edit/{kid}',
+                views: {
+                    '@': {
+                        templateUrl: 'app/admin/kegiatan/edit/edit.html',
+                        controller: 'AdminKegiatanEditCtrl'
+                    }
+                },
+                data: {
+                    permissions: {
+                        only: ['admin'],
+                        redirectTo: 'login'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Edit'
                 }
             });
     });

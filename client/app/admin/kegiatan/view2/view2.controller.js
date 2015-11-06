@@ -7,7 +7,7 @@ angular.module('peonApp')
 
         $scope.getProgram = function () {
             block.start();
-            Restangular.one('programs').customGET($stateParams.id).then(function (data) {
+            Restangular.one('programs').customGET($stateParams.pid).then(function (data) {
                 $scope.program = data;
                 $timeout(function () {
                     $scope.results = data._kegiatan;
