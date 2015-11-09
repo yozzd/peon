@@ -62,7 +62,7 @@ function removeEntity(res) {
 
 // Gets a list of Programs
 exports.index = function (req, res) {
-    Program.findAsync()
+    Program.find().populate('_kegiatan').execAsync()
         .then(responseWithResult(res))
         .catch(handleError(res));
 };

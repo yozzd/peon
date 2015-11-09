@@ -28,6 +28,9 @@ angular.module('peonApp')
             }, {
                 label: 'Kegiatan',
                 state: 'admin.kegiatan'
+            }, {
+                label: 'Daftar Program / Kegiatan',
+                state: 'admin.daftar'
             }]
         };
 

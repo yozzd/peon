@@ -218,5 +218,59 @@ angular.module('peonApp')
                 ncyBreadcrumb: {
                     label: 'Edit'
                 }
+            })
+            .state('admin.daftar', {
+                url: '/daftar',
+                views: {
+                    '@': {
+                        templateUrl: 'app/admin/daftar/view/view.html',
+                        controller: 'AdminDaftarViewCtrl'
+                    }
+                },
+                data: {
+                    permissions: {
+                        only: ['admin'],
+                        redirectTo: 'login'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Daftar Program / Kegiatan'
+                }
+            })
+            .state('admin.daftar.detail1', {
+                url: '/detail1/{id}',
+                views: {
+                    'detail': {
+                        templateUrl: 'app/admin/daftar/detail1/detail1.html',
+                        controller: 'AdminDaftarDetail1Ctrl'
+                    }
+                },
+                data: {
+                    permissions: {
+                        only: ['admin'],
+                        redirectTo: 'login'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Detail Program'
+                }
+            })
+            .state('admin.daftar.detail2', {
+                url: '/detail2/{id}',
+                views: {
+                    'detail': {
+                        templateUrl: 'app/admin/daftar/detail2/detail2.html',
+                        controller: 'AdminDaftarDetail2Ctrl'
+                    }
+                },
+                data: {
+                    permissions: {
+                        only: ['admin'],
+                        redirectTo: 'login'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Detail Kegiatan'
+                }
             });
     });

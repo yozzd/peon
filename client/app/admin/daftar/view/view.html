@@ -1,0 +1,76 @@
+<banner></banner>
+<navbar></navbar>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <sidebar></sidebar>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <div class="row">
+                <ncy-breadcrumb></ncy-breadcrumb>
+            </div>
+
+            <div class="content">
+                <h4 class="page-header">Sumber Dana</h4>
+                <div class="col-sm-7">
+                    <div class="disp" block-ui="block1">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Daftar Program / Kegiatan</div>
+                            <ul class="list-group" ng-show="nodata">
+                                <li class="list-group-item list-group-item-info">Tidak ada data</li>
+                            </ul>
+                            <div class="table-responsive" ng-show="datas.length>0">
+                                <table class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="5" class="text-center">Kode</th>
+                                            <th class="text-center">Program / Kegiatan</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat-start="program in datas | orderBy:'k4'">
+                                            <td style="width: 6%;" class="text-center"><strong>{{program.k1}}</strong></td>
+                                            <td style="width: 6%;" class="text-center"><strong>{{program.k2}}</strong></td>
+                                            <td style="width: 6%;" class="text-center"><strong>{{program.k3}}</strong></td>
+                                            <td style="width: 6%;" class="text-center"><strong>{{program.k4}}</strong></td>
+                                            <td style="width: 6%;" class="text-center"></td>
+                                            <td><strong>{{program.uraian}}</strong></td>
+                                            <td class="text-center"><a ui-sref=".detail1({id:program._id})" title="Detail">Detail</a></td>
+                                        </tr>
+                                        <tr ng-repeat-start="kegiatan in program._kegiatan | orderBy:'k5'">
+                                            <td style="width: 6%;" class="text-center">{{kegiatan.k1}}</td>
+                                            <td style="width: 6%;" class="text-center">{{kegiatan.k2}}</td>
+                                            <td style="width: 6%;" class="text-center">{{kegiatan.k3}}</td>
+                                            <td style="width: 6%;" class="text-center">{{kegiatan.k4}}</td>
+                                            <td style="width: 6%;" class="text-center">{{kegiatan.k5}}</td>
+                                            <td>{{kegiatan.uraian}}</td>
+                                            <td class="text-center"><a ui-sref=".detail2({id:kegiatan._id})" title="Detail">Detail</a></td>
+                                        </tr>
+                                        <tr ng-repeat-end></tr>
+                                        <tr ng-repeat-end>
+                                            <td style="width: 6%; height: 33px;"></td>
+                                            <td style="width: 6%; height: 33px;"></td>
+                                            <td style="width: 6%; height: 33px;"></td>
+                                            <td style="width: 6%; height: 33px;"></td>
+                                            <td style="width: 6%; height: 33px;"></td>
+                                            <td style="height: 33px;"></td>
+                                            <td style="height: 33px;"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <div class="disp" block-ui="block2">
+                        <div ui-view="detail">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -141,9 +141,20 @@ p.help-block {
 
 .login {
     margin-top: 150px;
+    text-align: center;
+    img.logo {
+        width: 80px;
+    }
     .lead {
         margin-bottom: 0;
-        color: #337ab7;
+        color: #1B5E20;
+    }
+    .panel-default > .panel-heading {
+        color: #fff;
+        /*background-color: #F44336;*/
+        background: linear-gradient(to bottom, rgba(255, 48, 25, 1) 0%, rgba(207, 4, 4, 1) 100%);
+        border-color: #D32F2F;
+        text-align: left;
     }
     .panel-body {
         .login-form {
@@ -205,8 +216,9 @@ p.help-block {
         padding: 0 20px 20px 20px;
         overflow-x: hidden;
         overflow-y: auto;
-        background-color: #f2f2f2;
-        text-align: right;
+        /*background: #8BC34A;*/
+        background: #388E3C;
+        text-align: center;
     }
 }
 
@@ -217,8 +229,9 @@ p.help-block {
 }
 
 .nav-sidebar > li > a {
-    color: #777;
+    color: #fff;
     padding: 5px 20px;
+    text-align: left;
 }
 
 .nav-sidebar > li > a:hover {
@@ -229,22 +242,18 @@ p.help-block {
 .nav-sidebar > li > a.active,
 .nav-sidebar > li > a:hover.active,
 .nav-sidebar > li > a:focus.active {
-    color: #009688;
-    border-right: 1px solid #009688;
+    color: @color;
+    background: #f2f2f2;
 }
 
 .nav-sidebar > li.header {
     padding: 8px 20px;
-    background: #eee;
+    /*background: #689F38;*/
+    background: linear-gradient(to bottom, rgba(180, 221, 180, 1) 0%, rgba(131, 199, 131, 1) 17%, rgba(82, 177, 82, 1) 33%, rgba(0, 138, 0, 1) 67%, rgba(0, 87, 0, 1) 83%, rgba(0, 36, 0, 1) 100%);
     margin-bottom: 10px;
-    border-bottom: 1px solid #e7e7e7;
-    border-right: 1px solid #e7e7e7;
-}
-
-.nav-sidebar > li.subheader {
-    margin-top: 10px;
-    padding: 10px 20px;
-    color: #337ab7;
+    /*border-bottom: 1px solid #558B2F;*/
+    color: #fff;
+    font-weight: bold;
 }
 
 
@@ -269,7 +278,10 @@ p.help-block {
     left: 0;
     right: 0;
     height: 75px;
-    background: #337ab7;
+    /*background: #337ab7;*/
+    /*background: linear-gradient(to bottom, rgba(30, 87, 153, 1) 0%, rgba(125, 185, 232, 0) 100%);*/
+    /*background: linear-gradient(to bottom, rgba(125, 185, 232, 0) 0%, rgba(30, 87, 153, 1) 100%);*/
+    background: linear-gradient(to bottom, rgba(25, 132, 225, 1) 0%, rgba(46, 80, 114, 1) 100%);
     color: #fff;
     padding: 5px 15px;
     display: table;
@@ -297,6 +309,7 @@ p.help-block {
     li + li:before {
         font-family: 'FontAwesome';
         content: '\f105';
+        color: @color;
     }
     position: fixed;
     width: 100%;

@@ -1,0 +1,23 @@
+<div class="table-responsive">
+    <table class="table table-view">
+        <tbody>
+            <tr>
+                <td>Kode Program</td>
+                <td>{{data.k1}}.{{data.k2}}.{{data.k3}}.{{data.k4}}</td>
+            </tr>
+            <tr>
+                <td>Uraian Program</td>
+                <td>{{data.uraian}}</td>
+            </tr>
+            <tr>
+                <td>Indikator Kinerja Program</td>
+                <td>{{data.indikator}}</td>
+            </tr>
+            <tr>
+                <td>Tampilkan?</td>
+                <td ng-if="data.tampilkan==true">Ya</td>
+                <td ng-if="data.tampilkan==false">Tidak</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
