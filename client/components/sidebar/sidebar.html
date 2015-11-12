@@ -4,3 +4,8 @@
     <li><a ui-sref="{{menu.state}}" ui-sref-active="active" ng-repeat="menu in admin.settings" title="{{menu.label}}">{{menu.label}}</a></li>
     <li><a ui-sref="{{menu.state}}" ui-sref-active="active" ng-repeat="menu in admin.main" title="{{menu.label}}">{{menu.label}}</a></li>
 </ul>
+<ul class="nav nav-sidebar" ng-show="isDinas()">
+    <li class="header">MENU</li>
+    <li><a ui-sref="{{menu.state}}" ui-sref-active-eq="active" ng-repeat="menu in dinas.home" title="{{menu.label}}">{{menu.label}}</a></li>
+    <li><a ui-sref="{{menu.state}}" ui-sref-active="active" ng-repeat="menu in dinas.main" title="{{menu.label}}">{{menu.label}}</a></li>
+</ul>

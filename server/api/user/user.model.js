@@ -18,6 +18,7 @@ var UserSchema = new Schema({
     provider: String,
     salt: String,
     group: String,
+    no: String,
     _profil: {
         type: Schema.ObjectId,
         ref: 'Profil'

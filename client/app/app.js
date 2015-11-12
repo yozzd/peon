@@ -95,5 +95,18 @@ angular.module('peonApp', [
                 deferred.reject();
             });
             return deferred.promise;
+        })
+        .defineRole('user', function () {
+            var deferred = $q.defer();
+            Auth.getCurrentUser(function (data) {
+                if (data.role === 'user') {
+                    deferred.resolve();
+                } else {
+                    deferred.reject();
+                }
+            }, function () {
+                deferred.reject();
+            });
+            return deferred.promise;
         });
 });

@@ -36,10 +36,10 @@
                                             </td>
                                         </tr>
                                         <tr ng-repeat="data in datas | orderBy:'k4' | filter:search">
-                                            <td class="text-center">{{data.k1}}</td>
-                                            <td class="text-center">{{data.k2}}</td>
-                                            <td class="text-center">{{data.k3}}</td>
-                                            <td class="text-center">{{data.k4}}</td>
+                                            <td class="text-center" style="width: 3%;">{{data.k1}}</td>
+                                            <td class="text-center" style="width: 3%;">{{data.k2}}</td>
+                                            <td class="text-center" style="width: 3%;">{{data.k3}}</td>
+                                            <td class="text-center" style="width: 3%;">{{data.k4}}</td>
                                             <td><a ui-sref=".view2({pid:data._id})">{{data.uraian}}</a></td>
                                         </tr>
                                     </tbody>

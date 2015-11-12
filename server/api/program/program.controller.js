@@ -66,6 +66,13 @@ exports.index = function (req, res) {
         .then(responseWithResult(res))
         .catch(handleError(res));
 };
+exports.query1 = function (req, res) {
+    Program.find({
+            tampilkan: false
+        }).populate('_kegiatan').execAsync()
+        .then(responseWithResult(res))
+        .catch(handleError(res));
+};
 
 // Gets a single Program from the DB
 exports.show = function (req, res) {

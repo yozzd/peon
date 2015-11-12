@@ -5,6 +5,7 @@ angular.module('peonApp')
 
         $scope.isLoggedIn = Auth.isLoggedIn;
         $scope.isAdmin = Auth.isAdmin;
+        $scope.isDinas = Auth.isDinas;
         $scope.getCurrentUser = Auth.getCurrentUser;
 
         $scope.admin = {
@@ -31,6 +32,17 @@ angular.module('peonApp')
             }, {
                 label: 'Daftar Program / Kegiatan',
                 state: 'admin.daftar'
+            }]
+        };
+
+        $scope.dinas = {
+            home: [{
+                label: 'Home',
+                state: 'dinas'
+            }],
+            main: [{
+                label: 'Entry Proposal',
+                state: 'dinas.entry'
             }]
         };
 

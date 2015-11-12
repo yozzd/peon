@@ -7,6 +7,7 @@ import auth from '../../auth/auth.service';
 var router = express.Router();
 
 router.get('/', auth.isAuthenticated(), controller.index);
+router.get('/query1', auth.isAuthenticated(), controller.query1);
 router.get('/:id', auth.isAuthenticated(), controller.show);
 router.post('/', auth.hasRole('admin'), controller.create);
 router.put('/:id', auth.hasRole('admin'), controller.update);
