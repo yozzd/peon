@@ -1,0 +1,47 @@
+<banner></banner>
+<navbar></navbar>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <sidebar></sidebar>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <div class="row">
+                <ncy-breadcrumb></ncy-breadcrumb>
+            </div>
+
+            <div class="content">
+                <h4 class="page-header">Daftar Proposal</h4>
+                <div class="col-sm-12">
+                    <div class="disp" block-ui="block">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Daftar Proposal</div>
+                            <ul class="list-group" ng-show="nodata">
+                                <li class="list-group-item list-group-item-info">Tidak ada data</li>
+                            </ul>
+                            <div class="table-responsive" ng-show="datas.length>0">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center" style="width: 5%;">No</th>
+                                            <th class="text-center" style="width: 20%;">No. Proposal</th>
+                                            <th class="text-center">Usulan Anggaran</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="data in datas">
+                                            <td class="text-center">{{$index+1}}</td>
+                                            <td><a ui-sref=".edit({id:data.id})">{{data.no}}</a></td>
+                                            <td class="text-right">{{data.anggaran|number:0}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

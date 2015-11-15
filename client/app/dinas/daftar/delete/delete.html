@@ -1,0 +1,36 @@
+<div class="aside" tabindex="-1" role="dialog" ng-controller="DinasDaftarDeleteCtrl">
+    <div class="aside-dialog">
+        <div class="aside-content">
+            <div class="aside-header">
+                <h4 class="aside-title">Hapus ?</h4>
+            </div>
+            <div class="aside-body">
+                <div class="alert alert-danger">
+                    <div>PERHATIAN!!! DATA PENTING!!!</div>
+                    <div>Anda akan menghapus seluruh data yang berkaitan</div>
+                    <div>Apakah anda yakin akan menghapus data ini?</div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered alert alert-danger">
+                        <tbody>
+                            <tr>
+                                <td><strong>{{program.uraian}}</strong></td>
+                                <td class="text-right"><strong>{{anggaran|number:0}}</strong></td>
+                            </tr>
+                            <tr ng-repeat="data in program._skegiatan">
+                                <td>{{data.uraian}}</td>
+                                <td class="text-right">{{data.volume*data.harga|number:0}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="aside-footer">
+                <ul class="list-inline">
+                    <li><a href="" ng-click="$hide()">Tidak</a></li>
+                    <li><a href="" class="text-danger" ng-click="delete(program._id)">Ya</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

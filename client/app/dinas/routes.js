@@ -38,5 +38,41 @@ angular.module('peonApp')
                 ncyBreadcrumb: {
                     label: 'Entry Proposal'
                 }
+            })
+            .state('dinas.daftar', {
+                url: '/daftar',
+                views: {
+                    '@': {
+                        templateUrl: 'app/dinas/daftar/view/view.html',
+                        controller: 'DinasDaftarViewCtrl'
+                    }
+                },
+                data: {
+                    permissions: {
+                        only: ['user', 'admin'],
+                        redirectTo: 'login'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Daftar Proposal'
+                }
+            })
+            .state('dinas.daftar.edit', {
+                url: '/edit/{id}',
+                views: {
+                    '@': {
+                        templateUrl: 'app/dinas/daftar/edit/edit.html',
+                        controller: 'DinasDaftarEditCtrl'
+                    }
+                },
+                data: {
+                    permissions: {
+                        only: ['user', 'admin'],
+                        redirectTo: 'login'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Edit Proposal'
+                }
             });
     });

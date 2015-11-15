@@ -63,14 +63,14 @@ function removeEntity(res) {
 
 // Gets a list of Sprograms
 exports.index = function (req, res) {
-    Sprogram.findAsync()
+    Sprogram.find().populate('_skegiatan').execAsync()
         .then(responseWithResult(res))
         .catch(handleError(res));
 };
 
 // Gets a single Sprogram from the DB
 exports.show = function (req, res) {
-    Sprogram.findByIdAsync(req.params.id)
+    Sprogram.findById(req.params.id).populate('_skegiatan').execAsync()
         .then(handleEntityNotFound(res))
         .then(responseWithResult(res))
         .catch(handleError(res));
@@ -174,7 +174,14 @@ exports.update = function (req, res) {
     }
     Sprogram.findByIdAsync(req.params.id)
         .then(handleEntityNotFound(res))
-        .then(saveUpdates(req.body))
+        .then(function (program) {
+            _.each(req.body._skegiatan, function (value) {
+                value.jumlah = value.volume * value.harga;
+                Skegiatan.findByIdAsync(value._id)
+                    .then(saveUpdates(value))
+            })
+            return program;
+        })
         .then(responseWithResult(res))
         .catch(handleError(res));
 };
@@ -183,6 +190,12 @@ exports.update = function (req, res) {
 exports.destroy = function (req, res) {
     Sprogram.findByIdAsync(req.params.id)
         .then(handleEntityNotFound(res))
+        .then(function (program) {
+            _.each(program._skegiatan, function (value) {
+                Skegiatan.findByIdAndRemoveAsync(value)
+            })
+            return program;
+        })
         .then(removeEntity(res))
         .catch(handleError(res));
 };

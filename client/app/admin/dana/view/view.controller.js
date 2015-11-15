@@ -2,6 +2,7 @@
 
 angular.module('peonApp')
     .controller('AdminDanaViewCtrl', function ($scope, Restangular, $alert, blockUI, $timeout) {
+
         var block = blockUI.instances.get('block');
 
         $scope.getDana = function () {

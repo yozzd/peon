@@ -43,6 +43,9 @@ angular.module('peonApp')
             main: [{
                 label: 'Entry Proposal',
                 state: 'dinas.entry'
+            }, {
+                label: 'Daftar Proposal',
+                state: 'dinas.daftar'
             }]
         };
 
