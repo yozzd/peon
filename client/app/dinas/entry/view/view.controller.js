@@ -19,10 +19,11 @@ angular.module('peonApp')
             block.start();
             Restangular.all('sprograms').customGETLIST().then(function (datas) {
                 $timeout(function () {
-                    $scope.datas = _.filter(datas, function (value) {
+                    $scope.datas = [];
+                    var filter = _.filter(datas, function (value) {
                         return value.pelaksana === $scope.getCurrentUser().name && value.tahun === tahun;
                     });
-                    _.each($scope.datas, function (value1, key) {
+                    _.each(filter, function (value1, key) {
                         var anggaran = [];
                         _.each(value1._skegiatan, function (value2) {
                             anggaran.push(value2.jumlah);
@@ -30,6 +31,7 @@ angular.module('peonApp')
                         $scope.datas[key] = {
                             id: value1._id,
                             no: value1.no,
+                            skpd: value1.skpd,
                             anggaran: _.sum(anggaran)
                         };
                     });

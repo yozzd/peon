@@ -26,13 +26,15 @@
                                         <tr>
                                             <th class="text-center" style="width: 5%;">No</th>
                                             <th class="text-center" style="width: 20%;">No. Proposal</th>
+                                            <th class="text-center" style="width: 30%;">SKPD</th>
                                             <th class="text-center">Usulan Anggaran</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr ng-repeat="data in datas">
+                                        <tr ng-repeat="data in datas | orderBy:'no'">
                                             <td class="text-center">{{$index+1}}</td>
                                             <td><a ui-sref=".edit({id:data.id})">{{data.no}}</a></td>
+                                            <td>{{data.skpd}}</td>
                                             <td class="text-right">{{data.anggaran|number:0}}</td>
                                         </tr>
                                     </tbody>

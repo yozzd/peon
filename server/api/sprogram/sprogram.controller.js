@@ -13,6 +13,7 @@ var _ = require('lodash');
 var moment = require('moment');
 var Sprogram = require('./sprogram.model');
 var Skegiatan = require('../skegiatan/skegiatan.model');
+var Profil = require('../profil/profil.model');
 
 function handleError(res, statusCode) {
     statusCode = statusCode || 500;
@@ -92,23 +93,27 @@ exports.create = function (req, res) {
                     if (found) {
                         throw 'Kode Program "' + found.k4 + '" dengan Uraian "' + found.uraian + '" terdaftar dengan No. Proposal ' + found.no
                     } else {
-                        var c = count < 10 ? '0' + (count + 1) : count + 1
-                        var newSprogram = new Sprogram({
-                            no: req.user.no + '' + req.body.program.k4 + '' + c + '/' + moment().format('DDMMYY'),
-                            k1: req.body.program.k1,
-                            k2: req.body.program.k2,
-                            k3: req.body.program.k3,
-                            k4: req.body.program.k4,
-                            uraian: req.body.program.uraian,
-                            indikator: req.body.program.indikator,
-                            tampilkan: req.body.program.tampilkan,
-                            pelaksana: req.user.name,
-                            tahun: moment().add(1, 'years').format('YYYY')
-                        });
-                        return newSprogram.saveAsync()
-                            .then(function (saved) {
-                                return saved;
-                            });
+                        return Profil.findByIdAsync(req.user._profil)
+                            .then(function (profil) {
+                                var c = count < 10 ? '0' + (count + 1) : count + 1
+                                var newSprogram = new Sprogram({
+                                    no: req.user.no + '' + req.body.program.k4 + '' + c + '/' + moment().format('DDMMYY'),
+                                    k1: req.body.program.k1,
+                                    k2: req.body.program.k2,
+                                    k3: req.body.program.k3,
+                                    k4: req.body.program.k4,
+                                    uraian: req.body.program.uraian,
+                                    indikator: req.body.program.indikator,
+                                    tampilkan: req.body.program.tampilkan,
+                                    pelaksana: req.user.name,
+                                    skpd: profil.skpd,
+                                    tahun: moment().add(1, 'years').format('YYYY')
+                                });
+                                return newSprogram.saveAsync()
+                                    .then(function (saved) {
+                                        return saved;
+                                    });
+                            })
                     }
                 })
                 .then(function (program) {

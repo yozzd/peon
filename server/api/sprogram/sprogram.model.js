@@ -49,6 +49,11 @@ var SprogramSchema = new Schema({
         default: false,
         trim: true
     },
+    skpd: {
+        type: String,
+        default: false,
+        trim: true
+    },
     tahun: {
         type: String,
         default: false,

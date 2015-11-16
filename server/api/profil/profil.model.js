@@ -60,6 +60,11 @@ var ProfilSchema = new Schema({
         default: '',
         trim: true
     },
+    group: {
+        type: String,
+        default: '',
+        trim: true
+    },
     _user: {
         type: Schema.ObjectId,
         ref: 'User',
