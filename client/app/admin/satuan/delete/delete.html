@@ -2,7 +2,7 @@
     <div class="aside-dialog">
         <div class="aside-content">
             <div class="aside-header">
-                <h4 class="aside-title">Hapus ?</h4>
+                <h4 class="aside-title">Hapus?</h4>
             </div>
             <div class="aside-body">
                 <div>Apakah anda yakin akan menghapus data ini?</div>
@@ -17,7 +17,9 @@
             </div>
             <div class="aside-footer">
                 <ul class="list-inline">
-                    <li><a href="" ng-click="$hide()">Tidak</a></li>
+                    <li>
+                        <button type="button" class="btn btn-primary btn-sm" ng-click="$hide()">Tidak</button>
+                    </li>
                     <li><a href="" class="text-danger" ng-click="delete(data._id)">Ya</a></li>
                 </ul>
             </div>

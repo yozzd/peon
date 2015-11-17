@@ -162,7 +162,7 @@ angular.module('peonApp')
                     }
                 },
                 ncyBreadcrumb: {
-                    label: 'Edit'
+                    label: 'Edit Program'
                 }
             })
             .state('admin.kegiatan', {
@@ -216,7 +216,7 @@ angular.module('peonApp')
                     }
                 },
                 ncyBreadcrumb: {
-                    label: 'Edit'
+                    label: 'Edit Kegiatan'
                 }
             })
             .state('admin.daftar', {
@@ -271,6 +271,42 @@ angular.module('peonApp')
                 },
                 ncyBreadcrumb: {
                     label: 'Detail Kegiatan'
+                }
+            })
+            .state('admin.proposal', {
+                url: '/proposal',
+                views: {
+                    '@': {
+                        templateUrl: 'app/admin/proposal/view/view.html',
+                        controller: 'AdminProposalViewCtrl'
+                    }
+                },
+                data: {
+                    permissions: {
+                        only: ['admin'],
+                        redirectTo: 'login'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Daftar Proposal'
+                }
+            })
+            .state('admin.proposal.edit', {
+                url: '/edit/{id}',
+                views: {
+                    '@': {
+                        templateUrl: 'app/admin/proposal/edit/edit.html',
+                        controller: 'AdminProposalEditCtrl'
+                    }
+                },
+                data: {
+                    permissions: {
+                        only: ['admin'],
+                        redirectTo: 'login'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Edit Proposal'
                 }
             });
     });

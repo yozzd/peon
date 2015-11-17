@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('peonApp')
-    .controller('DinasDaftarEditCtrl', function ($scope, Restangular, $stateParams, $alert, $aside) {
+    .controller('AdminProposalEditCtrl', function ($scope, Restangular, $stateParams, $alert, $aside) {
 
         function getProgram() {
             Restangular.one('sprograms').customGET($stateParams.id).then(function (data) {
@@ -27,7 +27,7 @@ angular.module('peonApp')
         $scope.delete = function () {
             var deleteAside = $aside({
                 scope: $scope,
-                templateUrl: 'app/dinas/daftar/delete/delete.html'
+                templateUrl: 'app/admin/proposal/delete/delete.html'
             });
             deleteAside.$promise.then(function () {
                 deleteAside.show();
